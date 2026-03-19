@@ -5,10 +5,10 @@ Modern terminal setup: **WezTerm** + **Zsh** + **Starship** + **Claude Code stat
 Works on **Linux**, **macOS** and **Windows** (WSL).
 
 ```
-┌──────────────────────────────────────────────────────────────────────┐
+┌────────────────────────────────────────────────────────────────────┐
 │  Catppuccin Mocha theme · JetBrainsMono Nerd Font · 92% opacity    │
 │  Starship prompt · Git-aware · Claude Code context bar             │
-└──────────────────────────────────────────────────────────────────────┘
+└────────────────────────────────────────────────────────────────────┘
 ```
 
 ---
