@@ -1,0 +1,87 @@
+#---------------geral----------------#
+alias c='clear'
+alias f='flatpak'
+alias xo='xdg-open'
+alias k='kubectx'
+alias e='exa --icons -lh'
+alias ee='exa --icons -lah'
+alias b='batcat'
+alias bb='batcat --paging=never'
+alias bpn='batcat --paging=never'
+alias uu='sudo apt update && sudo apt upgrade -y'
+alias aa='sudo apt autoremove -y'
+alias uua='sudo apt update && sudo apt upgrade -y && sudo apt autoremove -y'
+alias llp='sudo -k lsof -i -P -n | rg LISTEN | batcat' # list LISTEN ports
+alias clock='tty-clock -cst'
+alias agc='gcloud config configurations activate'
+alias ea='openssl aes-256-cbc -a -salt -in' # encrypt anything
+alias da='openssl aes-256-cbc -d -a -in' # decrypt anything
+alias scc='sync; echo 3 > /proc/sys/vm/drop_caches' # clear cache. PS: use su command before.
+alias ntp='/etc/init.d/ntp'
+alias dfh='df -H | awk "NR==1" && df -H | awk "NR==3"'
+alias rss='if [ $(ls ~/Pictures/Screenshots | wc -l) != 0 ]; then echo "cleaning directory..." && rm ~/Pictures/Screenshots/*.png && echo "...done!"; else echo "directory is empty"; fi;'
+alias fed='find . -type d -empty'
+alias rm1='read item && rm -rf *[\!"$item"]*' # recursively remove files
+alias duh='sudo du -h $(ls | fzf) | tail -n 1'
+alias auv='asdf_update_versions'
+alias fcp='flatpak run --command=chromium org.chromium.Chromium --proxy-server='
+#------------------------------------#
+#-----------------git----------------#
+# git aliases (oh-my-zsh)
+alias ega='vim ~/.oh-my-zsh/plugins/git/git.plugin.zsh'
+# diff
+alias gdpr='git diff origin/main...origin/$(git branch --remote | sed "s|origin/||" | fzf | sed "s/^[[:space:]]*//;s/[[:space:]]*$//")'
+alias glogf='git log --pretty=format:"%h - %an (%ae), %ar : %s"'
+alias gs='git show'
+alias gbm='git branch -M'
+alias ggpull!='git pull origin -f $(git_current_branch)'
+alias ggpush!='git push origin --force-with-lease $(git_current_branch)'
+alias grh1='git reset HEAD --soft'
+# delete branch
+alias gbdl='git branch -D $(git branch --list | rg --invert-match "(master|main|dev|\*)" | fzf)'
+alias gbdr='git push origin --delete $(git branch --remote | grep --invert-match "(master|main|dev|\*)" | fzf | cut -d "/" -f 2-)'
+alias gbda!='git branch --list | rg --invert-match "(master|main|develop|dev|\*)" | xargs git branch -D'
+# merge branch
+alias gmm='git merge $(git_main_branch)'
+alias gmd='git merge $(git_develop_branch)'
+alias gmb='git merge $(git branch --list | fzf)'
+# list branch
+alias gbl='git branch --list | batcat'
+alias gbr='git branch --remote | batcat'
+alias gblf='git branch --list | sed "s/ \+/ /g" | cut -d " " -f 2- | fzf'
+alias gbrf='git branch --remote | sed "s/ \+/ /g"| cut -d " " -f 2- | fzf'
+# change branch
+alias gswl='git switch $(git branch --list | fzf | tr -d "[:space:]")'
+alias gswr='git switch $(git branch --remote | fzf | cut -d "/" -f 2-)'
+# get all changes of other branch ignoring current branch - WARNING!
+alias gmXl='git merge -Xtheirs $(git branch --list | fzf)'
+alias gmXr='git merge -Xtheirs $(git branch --remote | fzf)'
+# pull origin changes and update current branch
+alias gubm='git switch $(git_main_branch) && git pull origin $(git_current_branch) && git switch $(git_develop_branch) && git merge $(git_main_branch) && git switch @{-2} && git merge $(git_develop_branch)'
+alias gubd='git switch $(git_develop_branch) && git pull origin $(git_current_branch) && git switch @{-1} && git merge $(git_develop_branch)'
+# git config - troque pelos seus dados
+alias gc1="git config --global user.name '<seu-username>' && git config --global user.email '<seu-email>'"
+alias gc2="git config --global user.name '<seu-username-trabalho>' && git config --global user.email '<seu-email-trabalho>'"
+alias gc3="git config --global user.name '<outro-username>' && git config --global user.email '<outro-email>'"
+#------------------------------------#
+#--------------[other]---------------#
+alias gc-pessoal='git config --global user.name "<seu-nome>" && git config --global user.email "<seu-email>"'
+alias gc-trabalho='git config --global user.name "<seu-nome>" && git config --global user.email "<seu-email-trabalho>"'
+alias mvnr='mvn clean compile && mvn spring-boot:run'
+alias ippc1='curl -s https://ipinfo.io/ip'
+alias ippc2='curl -s https://ifconfig.me'
+alias ippw1='wget -qO- https://ipinfo.io/ip'
+alias ippw2='wget -qO- https://ifconfig.me'
+alias pgen="cat /dev/random | tr -cd '[:graph:]' | head -c"
+alias xsc='xclip -select clipboard'
+#------------------------------------#
+#-----------------AWS----------------#
+alias ap1='export AWS_DEFAULT_PROFILE=<seu-profile-1>'
+alias ap2='export AWS_DEFAULT_PROFILE=<seu-profile-2>'
+alias ap3='export AWS_DEFAULT_PROFILE=<seu-profile-3>'
+alias acl='aws configure list'
+alias aps='aws-profile-select'
+# redis
+alias rc='redis-cli'
+alias rdev='redis-cli -h <seu-host-redis> -p 6379'
+#------------------------------------#

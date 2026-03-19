@@ -2,19 +2,54 @@ local wezterm = require("wezterm")
 local config = wezterm.config_builder()
 
 -- === APPEARANCE ===
-config.color_scheme = "Catppuccin Mocha"
+-- Colors: Gruvbox Dark (Aci profile — bg/fg/cursor/ANSI palette)
+config.colors = {
+	foreground = "#ebdbb2",
+	background = "#282828",
+	cursor_bg = "#c4e9ff",
+	cursor_fg = "#282828",
+	cursor_border = "#c4e9ff",
+	selection_fg = "#282828",
+	selection_bg = "#d5c4a1",
+	ansi = {
+		"#000000", -- black
+		"#cc0000", -- red
+		"#4e9a06", -- green
+		"#c4a000", -- yellow
+		"#3465a4", -- blue
+		"#75507b", -- magenta
+		"#06989a", -- cyan
+		"#d3d7cf", -- white
+	},
+	brights = {
+		"#555753", -- bright black
+		"#ef2929", -- bright red
+		"#8ae234", -- bright green
+		"#fce94f", -- bright yellow
+		"#729fcf", -- bright blue
+		"#ad7fa8", -- bright magenta
+		"#34e2e2", -- bright cyan
+		"#eeeeec", -- bright white
+	},
+	tab_bar = {
+		background = "#1d2021",
+		active_tab = { bg_color = "#282828", fg_color = "#ebdbb2" },
+		inactive_tab = { bg_color = "#1d2021", fg_color = "#928374" },
+		inactive_tab_hover = { bg_color = "#3c3836", fg_color = "#ebdbb2" },
+	},
+}
 config.font = wezterm.font_with_fallback({
+	{ family = "MesloLGS NF", weight = "Bold" },
 	{ family = "JetBrainsMono Nerd Font", weight = "Medium" },
 	{ family = "FiraCode Nerd Font", weight = "Medium" },
-	{ family = "MesloLGS NF" },
 	"Noto Color Emoji",
 })
-config.font_size = 11.0
+config.font_size = 12.0
 config.line_height = 1.15
 config.cell_width = 1.0
 
 -- Window
-config.window_background_opacity = 0.92
+config.window_background_opacity = 1.0
 config.window_padding = { left = 12, right = 12, top = 8, bottom = 8 }
 config.window_decorations = "RESIZE"
 config.enable_scroll_bar = false
@@ -28,8 +63,8 @@ config.tab_bar_at_bottom = true
 config.hide_tab_bar_if_only_one_tab = true
 config.tab_max_width = 32
 
--- Cursor
-config.default_cursor_style = "BlinkingBar"
+-- Cursor (underline, matching Aci profile)
+config.default_cursor_style = "BlinkingUnderline"
 config.cursor_blink_rate = 500
 config.cursor_blink_ease_in = "Constant"
 config.cursor_blink_ease_out = "Constant"
@@ -47,8 +82,8 @@ config.default_prog = { "zsh", "-l" }
 local act = wezterm.action
 config.keys = {
 	-- Splits (Alt + arrows style)
-	{ key = "d", mods = "CTRL|SHIFT", action = act.SplitHorizontal({ domain = "CurrentPaneDomain" }) },
-	{ key = "e", mods = "CTRL|SHIFT", action = act.SplitVertical({ domain = "CurrentPaneDomain" }) },
+	{ key = "o", mods = "CTRL|SHIFT", action = act.SplitVertical({ domain = "CurrentPaneDomain" }) },
+	{ key = "e", mods = "CTRL|SHIFT", action = act.SplitHorizontal({ domain = "CurrentPaneDomain" }) },
 
 	-- Navigate panes
 	{ key = "LeftArrow", mods = "ALT", action = act.ActivatePaneDirection("Left") },

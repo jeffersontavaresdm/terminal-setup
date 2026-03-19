@@ -376,7 +376,7 @@ This setup uses **Catppuccin Mocha** everywhere:
 
 | Action           | Key                    |
 |------------------|------------------------|
-| Split horizontal | `Ctrl+Shift+D`         |
+| Split horizontal | `Ctrl+Shift+O`         |
 | Split vertical   | `Ctrl+Shift+E`         |
 | Navigate panes   | `Alt+Arrows`           |
 | Resize panes     | `Ctrl+Alt+Arrows`      |
