@@ -35,7 +35,7 @@ Works on **Linux**, **macOS** and **Windows** (WSL).
 ```bash
 # 1. Install dependencies (see detailed instructions below)
 # 2. Clone this repo
-git clone https://github.com/<your-user>/terminal-setup.git
+git clone https://github.com/jeffersontavaresdm/terminal-setup.git
 cd terminal-setup
 
 # 3. Run the installer
