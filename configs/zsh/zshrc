@@ -25,13 +25,25 @@ eval "$(zoxide init zsh)"
 # --- Aliases ---
 [ -f ~/.shell_aliases ] && source ~/.shell_aliases
 
-# --- Homebrew (Linux) ---
-# Uncomment if using Homebrew on Linux:
-# eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+# --- Homebrew ---
+# Caches brew shellenv to avoid slowdown on every shell startup.
+# Uncomment the block for your OS:
 
-# --- Homebrew (macOS) ---
-# Uncomment if using Homebrew on macOS:
-# eval "$(/opt/homebrew/bin/brew shellenv)"
+# Linux:
+# _brew_cache="$HOME/.cache/brew_shellenv.sh"
+# if [[ ! -f "$_brew_cache" || "$_brew_cache" -ot "/home/linuxbrew/.linuxbrew/bin/brew" ]]; then
+#   /home/linuxbrew/.linuxbrew/bin/brew shellenv > "$_brew_cache"
+# fi
+# source "$_brew_cache"
+# unset _brew_cache
+
+# macOS:
+# _brew_cache="$HOME/.cache/brew_shellenv.sh"
+# if [[ ! -f "$_brew_cache" || "$_brew_cache" -ot "/opt/homebrew/bin/brew" ]]; then
+#   /opt/homebrew/bin/brew shellenv > "$_brew_cache"
+# fi
+# source "$_brew_cache"
+# unset _brew_cache
 
 # --- ASDF version manager (optional) ---
 # Linux via Homebrew:

@@ -6,7 +6,7 @@ Works on **Linux**, **macOS** and **Windows** (WSL).
 
 ```
 ┌────────────────────────────────────────────────────────────────────┐
-│  Catppuccin Mocha theme · JetBrainsMono Nerd Font · 92% opacity    │
+│  Gruvbox Dark theme · MesloLGS NF · 100% opacity                   │
 │  Starship prompt · Git-aware · Claude Code context bar             │
 └────────────────────────────────────────────────────────────────────┘
 ```
@@ -24,7 +24,7 @@ Works on **Linux**, **macOS** and **Windows** (WSL).
 | Claude Code statusline  | Context window, git, tokens display     |
 | zoxide                  | Smart `cd` (learns your directories)    |
 | fzf                     | Fuzzy finder for interactive selection  |
-| exa/eza                 | Modern `ls` replacement with icons      |
+| exa                     | Modern `ls` replacement with icons      |
 | bat                     | `cat` with syntax highlighting          |
 | ripgrep                 | Fast `grep` replacement                 |
 
@@ -336,7 +336,7 @@ After copying, edit `~/.zshrc` and uncomment the lines for your OS (Homebrew pat
 terminal-setup/
 ├── configs/
 │   ├── wezterm/
-│   │   └── wezterm.lua            # WezTerm config (Catppuccin Mocha, keybindings)
+│   │   └── wezterm.lua            # WezTerm config (Gruvbox Dark, keybindings)
 │   ├── starship/
 │   │   └── starship.toml          # Starship prompt (git-aware, minimal)
 │   ├── zsh/
@@ -345,7 +345,6 @@ terminal-setup/
 │   └── claude-code/
 │       ├── statusline.sh          # Claude Code statusline script
 │       └── settings.json          # Claude Code settings (statusline + model)
-├── prompts/                       # AI prompts used to generate this setup
 ├── backup/                        # Pre-migration backup (Terminator + p10k)
 │   └── RESTORE.sh                 # Rollback to previous setup
 ├── install.sh                     # Automated installer
@@ -360,15 +359,15 @@ This setup uses **Catppuccin Mocha** everywhere:
 
 | Element           | Color                           |
 |-------------------|---------------------------------|
-| Color scheme      | Catppuccin Mocha (WezTerm)      |
-| Background        | 92% opacity (semi-transparent)  |
-| Font              | JetBrainsMono Nerd Font 11pt    |
+| Color scheme      | Gruvbox Dark (WezTerm)          |
+| Background        | 100% opacity (solid)            |
+| Font              | MesloLGS NF Bold 12pt           |
 | Prompt symbol     | Green `❯` (red on error)        |
 | Directory         | Bold cyan                       |
 | Git branch        | Bold purple                     |
 | Git status        | Bold red                        |
 | Command duration  | Bold yellow                     |
-| Cursor            | Blinking bar, 500ms             |
+| Cursor            | Blinking underline, 500ms       |
 
 ---
 
@@ -376,8 +375,8 @@ This setup uses **Catppuccin Mocha** everywhere:
 
 | Action           | Key                    |
 |------------------|------------------------|
-| Split horizontal | `Ctrl+Shift+O`         |
-| Split vertical   | `Ctrl+Shift+E`         |
+| Split vertical   | `Ctrl+Shift+O`         |
+| Split horizontal | `Ctrl+Shift+E`         |
 | Navigate panes   | `Alt+Arrows`           |
 | Resize panes     | `Ctrl+Alt+Arrows`      |
 | Close pane       | `Ctrl+Shift+W`         |
