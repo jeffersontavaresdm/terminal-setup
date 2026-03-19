@@ -1,0 +1,73 @@
+# Starship Prompt - Modern, minimal, informative
+# Docs: https://starship.rs/config/
+
+format = """
+$directory\
+$git_branch\
+$git_status\
+$nodejs\
+$python\
+$rust\
+$golang\
+$java\
+$docker_context\
+$cmd_duration\
+$line_break\
+$character"""
+
+# Faster prompt
+command_timeout = 500
+add_newline = false
+
+[character]
+success_symbol = "[❯](bold green)"
+error_symbol = "[❯](bold red)"
+vimcmd_symbol = "[❮](bold purple)"
+
+[directory]
+style = "bold cyan"
+truncate_to_repo = false
+truncation_length = 0
+read_only = " 🔒"
+home_symbol = "~"
+
+[git_branch]
+symbol = " "
+style = "bold purple"
+format = "on[$symbol$branch(:$remote_branch)]($style) "
+
+[git_status]
+style = "bold red"
+format = '([$all_status$ahead_behind]($style) )'
+conflicted = "${count} conflict "
+ahead = "${count} ahead "
+behind = "${count} behind "
+diverged = "${ahead_count} ahead ${behind_count} behind "
+untracked = "${count} untracked "
+stashed = "${count} stash "
+modified = "${count} modified "
+staged = "${count} staged "
+deleted = "${count} deleted "
+
+[cmd_duration]
+min_time = 2_000
+style = "bold yellow"
+format = "took [$duration]($style) "
+
+[nodejs]
+disabled = true
+
+[python]
+disabled = true
+
+[rust]
+disabled = true
+
+[golang]
+disabled = true
+
+[java]
+disabled = true
+
+[docker_context]
+disabled = true

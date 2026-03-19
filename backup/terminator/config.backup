@@ -1,0 +1,45 @@
+[global_config]
+  inactive_color_offset = 0.6086956521739131
+  enabled_plugins = LaunchpadBugURLHandler, LaunchpadCodeURLHandler, APTURLHandler, TerminatorThemes
+  always_split_with_profile = True
+  title_use_system_font = False
+[keybindings]
+[profiles]
+  [[default]]
+    background_color = "#282828"
+    cursor_shape = underline
+    cursor_color = "#aaaaaa"
+    font = MesloLGS NF 10
+    foreground_color = "#ebdbb2"
+    show_titlebar = False
+    scrollbar_position = hidden
+    scroll_on_output = True
+    palette = "#000000:#cc0000:#4e9a06:#c4a000:#3465a4:#75507b:#06989a:#d3d7cf:#555753:#ef2929:#8ae234:#fce94f:#729fcf:#ad7fa8:#34e2e2:#eeeeec"
+    use_system_font = False
+    copy_on_selection = True
+  [[Aci]]
+    allow_bold = False
+    background_color = "#282828"
+    cursor_shape = underline
+    cursor_color = "#c4e9ff"
+    font = MesloLGS NF Bold 12
+    foreground_color = "#ebdbb2"
+    show_titlebar = False
+    scrollbar_position = hidden
+    scroll_on_output = True
+    palette = "#000000:#cc0000:#4e9a06:#c4a000:#3465a4:#75507b:#06989a:#d3d7cf:#555753:#ef2929:#8ae234:#fce94f:#729fcf:#ad7fa8:#34e2e2:#eeeeec"
+    use_system_font = False
+    bold_is_bright = True
+    copy_on_selection = True
+[layouts]
+  [[default]]
+    [[[window0]]]
+      type = Window
+      parent = ""
+      size = 750, 400
+    [[[child1]]]
+      type = Terminal
+      parent = window0
+      profile = Aci
+      directory = ""
+[plugins]
