@@ -1,0 +1,46 @@
+# ======================================================================
+# ZSH Configuration - Terminal Setup
+# ======================================================================
+
+# --- Oh My Zsh ---
+export ZSH="$HOME/.oh-my-zsh"
+ZSH_THEME=""  # Using Starship prompt instead
+
+plugins=(
+	git
+	zsh-syntax-highlighting
+	zsh-autosuggestions
+	bgnotify
+	command-not-found
+)
+
+source $ZSH/oh-my-zsh.sh
+
+# --- Environment ---
+export EDITOR=vim
+
+# --- Zoxide (smart cd) ---
+eval "$(zoxide init zsh)"
+
+# --- Aliases ---
+[ -f ~/.shell_aliases ] && source ~/.shell_aliases
+
+# --- Homebrew (Linux) ---
+# Uncomment if using Homebrew on Linux:
+# eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+
+# --- Homebrew (macOS) ---
+# Uncomment if using Homebrew on macOS:
+# eval "$(/opt/homebrew/bin/brew shellenv)"
+
+# --- ASDF version manager (optional) ---
+# Linux via Homebrew:
+# . /home/linuxbrew/.linuxbrew/opt/asdf/libexec/asdf.sh
+# macOS via Homebrew:
+# . /opt/homebrew/opt/asdf/libexec/asdf.sh
+
+# --- FZF ---
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# --- Starship prompt (MUST be at the end) ---
+eval "$(starship init zsh)"

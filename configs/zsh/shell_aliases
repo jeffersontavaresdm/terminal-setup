@@ -1,0 +1,41 @@
+# ======================================================================
+# Shell Aliases - Terminal Setup
+# ======================================================================
+
+#-----------------general-----------------#
+alias c='clear'
+alias e='exa --icons -lh'
+alias ee='exa --icons -lah'
+alias b='batcat'                          # Linux (apt)
+alias bb='batcat --paging=never'
+# macOS/Homebrew users: replace 'batcat' with 'bat'
+# alias b='bat'
+# alias bb='bat --paging=never'
+alias llp='sudo -k lsof -i -P -n | rg LISTEN | batcat'
+alias dfh='df -H | awk "NR==1" && df -H | awk "NR==3"'
+#-----------------------------------------#
+
+#-------------------git-------------------#
+alias ega='vim ~/.oh-my-zsh/plugins/git/git.plugin.zsh'
+alias glogf='git log --pretty=format:"%h - %an (%ae), %ar : %s"'
+alias gs='git show'
+alias gbm='git branch -M'
+alias ggpush!='git push origin --force-with-lease $(git_current_branch)'
+alias grh1='git reset HEAD --soft'
+# interactive branch operations (requires fzf + ripgrep)
+alias gbdl='git branch -D $(git branch --list | rg --invert-match "(master|main|dev|\*)" | fzf)'
+alias gbdr='git push origin --delete $(git branch --remote | grep --invert-match "(master|main|dev|\*)" | fzf | cut -d "/" -f 2-)'
+alias gmm='git merge $(git_main_branch)'
+alias gmd='git merge $(git_develop_branch)'
+alias gmb='git merge $(git branch --list | fzf)'
+alias gbl='git branch --list | batcat'
+alias gbr='git branch --remote | batcat'
+alias gswl='git switch $(git branch --list | fzf | tr -d "[:space:]")'
+alias gswr='git switch $(git branch --remote | fzf | cut -d "/" -f 2-)'
+#-----------------------------------------#
+
+#------------------utils------------------#
+alias ippc1='curl -s https://ipinfo.io/ip'
+alias ippc2='curl -s https://ifconfig.me'
+alias pgen="cat /dev/random | tr -cd '[:graph:]' | head -c"
+#-----------------------------------------#
