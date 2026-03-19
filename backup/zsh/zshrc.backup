@@ -125,10 +125,8 @@ export EDITOR=vim
 # dropbox
 #export PATH=$PATH:$HOME/Dropbox
 
-#export PATH="/home/nova/.asdf/installs/python/3.11.8/bin:$PATH"
-
 # aws
-#export AWS_DEFAULT_PROFILE=jeffersontdm
+#export AWS_DEFAULT_PROFILE=your-aws-profile
 #export AWS_DEFAULT_PROFILE=default
 
 # proxy
@@ -148,7 +146,7 @@ compinit
 
 # AWS
 #export AWS_PROFILE=default
-export AWS_PROFILE=bu-recurrence-dev
+export AWS_PROFILE=your-aws-profile
 function aws-profile-select() {
   # Lista perfis do ~/.aws/config (removendo prefixo 'profile ' e linhas vazias)
   profiles=$(grep '^\[profile ' ~/.aws/config | sed 's/^\[profile \(.*\)\]$/\1/')
@@ -169,11 +167,11 @@ function aws-profile-select() {
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # variaveis de ambiente temporarias
-export SONAR_TOKEN="504a4b26097b60f3adb47035f3eb64f4eb403afe"
-#export OICONTROLE_ARTIFACTORY_READONLY_USER="oicontrole_ci_readonly"
-export JFROG_READONLY_USER="clc - ciclo de vida controles"
-export JFROG_READONLY_PASS="cmVmdGtuOjAxOjAwMDAwMDAwMDA6RVZvWWhRN3MzazFQeGNqVFdVbkEyZXNsdFJQ"
-export URL_REPO_M4U="https://m4u.jfrog.io/m4u/"
+export SONAR_TOKEN="your-sonar-token"
+#export ARTIFACTORY_READONLY_USER="your-artifactory-user"
+export JFROG_READONLY_USER="your-artifactory-user"
+export JFROG_READONLY_PASS="your-artifactory-pass"
+export URL_REPO_JFROG="https://your-repo.jfrog.io/your-repo/"
 
 # variáveis de ambiente das aplicacoes contract em DEV
 source ~/.env
@@ -189,5 +187,5 @@ export PATH="$HOME/.local/bin:$PATH"
 #export PATH=$JAVA_HOME/bin:$PATH
 
 # peon-ping quick controls
-alias peon="bash /home/jefferson.tavares/.claude/hooks/peon-ping/peon.sh"
-[ -f /home/jefferson.tavares/.claude/hooks/peon-ping/completions.bash ] && source /home/jefferson.tavares/.claude/hooks/peon-ping/completions.bash
+alias peon="bash $HOME/.claude/hooks/peon-ping/peon.sh"
+[ -f "$HOME/.claude/hooks/peon-ping/completions.bash" ] && source "$HOME/.claude/hooks/peon-ping/completions.bash"
