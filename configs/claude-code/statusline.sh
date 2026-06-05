@@ -12,6 +12,7 @@ CTX_SIZE=$(echo "$input" | jq -r '.context_window.context_window_size // 0')
 TOKENS_IN=$(echo "$input" | jq -r '(.context_window.current_usage.cache_read_input_tokens // 0) + (.context_window.current_usage.input_tokens // 0) + (.context_window.current_usage.cache_creation_input_tokens // 0)')
 TOKENS_OUT=$(echo "$input" | jq -r '.context_window.current_usage.output_tokens // 0')
 DURATION=$(echo "$input" | jq -r '.cost.total_duration_ms // 0')
+EFFORT=$(echo "$input" | jq -r '.effort.level // empty')
 
 # Git branch: try symbolic-ref first (works for normal branches), fallback to rev-parse
 GIT_BRANCH=$(git -C "$DIR" symbolic-ref --short HEAD 2>/dev/null || git -C "$DIR" describe --tags --exact-match HEAD 2>/dev/null || git -C "$DIR" rev-parse --short HEAD 2>/dev/null)
@@ -90,7 +91,17 @@ L1="${BLUE} ${DIR}${R}"
 [ -n "$GIT_BRANCH" ] && L1+="${SEP}${GREEN} ${GIT_BRANCH}${R}"
 L1+="${SEP}${MAGENTA}${MODEL}${R}"
 
-# Line 2: session ctx │ tokens │ duration
+# Effort color by level (max=vermelho, xhigh=laranja, high=amarelo, medium=verde, low=neutro)
+case "$EFFORT" in
+    max)    EC="$RED" ;;
+    xhigh)  EC="$ORANGE" ;;
+    high)   EC="$YELLOW" ;;
+    medium) EC="$GREEN" ;;
+    *)      EC="$DIM" ;;
+esac
+
+# Line 2: session ctx │ tokens │ duration │ effort
 L2="${CC} ctx ${CTX_USED}% of ${CTX_LABEL}${R} ${BAR}${SEP}${CYAN}↑${TIN} ↓${TOUT}${R}${SEP}${WHITE}session ${DUR}${R}"
+[ -n "$EFFORT" ] && L2+="${SEP}${EC}effort: ${EFFORT}${R}"
 
 echo -e "${L1}\n${L2}"
